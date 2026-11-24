@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { DownloadButtons, CTASection, features } from "@/components/site";
+import { DownloadButtons, CTASection, features, PLAY_URL, STORE_URL } from "@/components/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
     "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Mero Biz", alternateName: ["मेरो बिज", "Karobar Ghar"],
     applicationCategory: "BusinessApplication", operatingSystem: "Windows, Android",
     description: "Offline-first ERP and POS for retail, restaurant, hotel, salon, wholesale and cooperative businesses.",
-    downloadUrl: "https://apps.microsoft.com/detail/9P5QGP9P0R6T", author: { "@type": "Person", name: "Sadiksha Rana" },
+    downloadUrl: [STORE_URL, PLAY_URL], sameAs: [STORE_URL, PLAY_URL], author: { "@type": "Person", name: "Sadiksha Rana" },
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   }) }] }),
   component: Index,

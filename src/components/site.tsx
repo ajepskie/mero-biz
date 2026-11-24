@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-export const PLAY_URL = ""; // set when Play Store link is provided
+export const PLAY_URL = "https://play.google.com/store/apps/details?id=com.elevenleaves.mero_biz&pcampaignid=web_share";
 export const STORE_URL = "https://apps.microsoft.com/detail/9P5QGP9P0R6T?hl=en-us&gl=AE&ocid=pdpshare";
 
 export function CTAButton({ children = "Get it on Microsoft Store", light = false }: { children?: ReactNode; light?: boolean }) {
@@ -50,7 +50,7 @@ export function CTASection() {
     <section className="mx-auto max-w-6xl px-5 py-20">
       <div className="hero-gradient rounded-3xl p-10 text-center text-primary-foreground md:p-16">
         <h2 className="font-display text-4xl font-bold md:text-5xl">Run your whole business — offline.</h2>
-        <p className="mx-auto mt-4 max-w-xl opacity-85">No mandatory internet. No recurring cloud fees. Install Mero Biz on Windows today.</p>
+        <p className="mx-auto mt-4 max-w-xl opacity-85">No mandatory internet. No recurring cloud fees. Install Mero Biz on Windows or Android today.</p>
         <div className="mt-8 flex justify-center"><DownloadButtons /></div>
       </div>
     </section>
@@ -86,7 +86,7 @@ export const faqs = [
   ["Which businesses can use Mero Biz?", "Retail and grocery stores, restaurants and cafes, hotels, salons and spas, wholesalers and distributors, and cooperative / micro-finance institutions."],
   ["Is Mero Biz compliant with Nepal VAT rules?", "Yes. It produces Annex 5 Sales and Annex 6 Purchase Books, Schedule 5 tax invoices and Schedule 7 credit notes, supports BS and AD calendars, and can sync with IRD CBMS."],
   ["Does it support Philippines BIR taxes?", "Yes. It is aligned with the EOPT Act (RA 11976 / RR 3-2024), including 12% VAT invoices, non-VAT invoices, 3% percentage tax and the 8% gross income option."],
-  ["Where can I download Mero Biz?", "Mero Biz is available for Windows on the Microsoft Store. An Android version for Google Play is on the way."],
+  ["Where can I download Mero Biz?", "Mero Biz is available for Windows on the Microsoft Store and for Android on Google Play."],
   ["Is my data safe?", "Your data never leaves your device unless you choose to sync, which keeps it private and under your control."],
 ] as const;
 

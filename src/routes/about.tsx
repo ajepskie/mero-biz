@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CTASection } from "@/components/site";
+import { CTASection, PLAY_URL, STORE_URL } from "@/components/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Mero Biz", founder: { "@type": "Person", name: "Sadiksha Rana" }, sameAs: ["https://apps.microsoft.com/detail/9P5QGP9P0R6T"] }) }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Mero Biz", founder: { "@type": "Person", name: "Sadiksha Rana" }, sameAs: [STORE_URL, PLAY_URL] }) }],
   }),
   component: About,
 });
@@ -23,7 +23,7 @@ function About() {
         <h1 className="font-display text-5xl font-bold">Built for real businesses</h1>
         <p className="mt-6 text-lg leading-relaxed">Mero Biz (मेरो बिज / Karobar Ghar) was created by <strong>Sadiksha Rana</strong> to give shops, restaurants, hotels, salons, wholesalers and cooperatives software that keeps working when the internet doesn't.</p>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {[["Experience", "Designed around everyday workflows: counter billing, kitchen tickets, room audits and member passbooks."], ["Expertise", "Tax logic follows the Nepal VAT Act and the Philippines EOPT Act, with statutory books and invoices."], ["Trust", "Your data stays on your device. Published on the Microsoft Store and reviewed by Microsoft."]].map(([t, d]) => (
+          {[["Experience", "Designed around everyday workflows: counter billing, kitchen tickets, room audits and member passbooks."], ["Expertise", "Tax logic follows the Nepal VAT Act and the Philippines EOPT Act, with statutory books and invoices."], ["Trust", "Your data stays on your device. Published on the Microsoft Store and Google Play, both reviewed by their platforms."]].map(([t, d]) => (
             <div key={t} className="rounded-2xl bg-secondary p-6"><h2 className="font-semibold">{t}</h2><p className="mt-2 text-sm text-muted-foreground">{d}</p></div>
           ))}
         </div>
