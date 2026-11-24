@@ -7,7 +7,8 @@ export const Route = createFileRoute("/features")({
     { name: "description", content: "Retail POS, restaurant KOT, hotel PMS, salon, wholesale and cooperative banking plus Nepal & Philippines tax compliance." },
     { property: "og:title", content: "Mero Biz Features" },
     { property: "og:description", content: "Six industry verticals and multi-country tax compliance in one offline app." },
-  ] }),
+    { property: "og:url", content: "/features" },
+  ], links: [{ rel: "canonical", href: "/features" }] }),
   component: Features,
 });
 

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CTAButton, CTASection, features } from "@/components/site";
+import { DownloadButtons, CTASection, features } from "@/components/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -7,7 +7,15 @@ export const Route = createFileRoute("/")({
     { name: "description", content: "Enterprise-grade, 100% offline-first ERP and POS for retail, restaurants, hotels, salons, wholesale and cooperatives." },
     { property: "og:title", content: "Mero Biz — Offline-First ERP & POS" },
     { property: "og:description", content: "Run your whole business offline with zero cloud fees." },
-  ] }),
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "/" },
+  ], links: [{ rel: "canonical", href: "/" }], scripts: [{ type: "application/ld+json", children: JSON.stringify({
+    "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Mero Biz", alternateName: ["मेरो बिज", "Karobar Ghar"],
+    applicationCategory: "BusinessApplication", operatingSystem: "Windows, Android",
+    description: "Offline-first ERP and POS for retail, restaurant, hotel, salon, wholesale and cooperative businesses.",
+    downloadUrl: "https://apps.microsoft.com/detail/9P5QGP9P0R6T", author: { "@type": "Person", name: "Sadiksha Rana" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  }) }] }),
   component: Index,
 });
 
@@ -20,7 +28,7 @@ function Index() {
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold leading-tight md:text-7xl">The business operating system that works without internet.</h1>
           <p className="mt-6 max-w-xl text-lg opacity-85">ERP and POS for retail, restaurants, hotels, salons, wholesale and cooperatives. Your data stays on your device — fast, private, and free of cloud fees.</p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <CTAButton />
+            <DownloadButtons light />
             <Link to="/features" className="rounded-full border border-primary-foreground/40 px-6 py-3 font-semibold">See features</Link>
           </div>
         </div>

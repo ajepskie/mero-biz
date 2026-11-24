@@ -7,7 +7,8 @@ export const Route = createFileRoute("/contact")({
     { name: "description", content: "Questions about Mero Biz? Get in touch with our team." },
     { property: "og:title", content: "Contact Mero Biz" },
     { property: "og:description", content: "Talk to the Mero Biz team about your business." },
-  ] }),
+    { property: "og:url", content: "/contact" },
+  ], links: [{ rel: "canonical", href: "/contact" }] }),
   component: Contact,
 });
 

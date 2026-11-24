@@ -7,7 +7,8 @@ export const Route = createFileRoute("/blog/")({
     { name: "description", content: "Tips on offline-first business software, tax compliance and growing your shop." },
     { property: "og:title", content: "Mero Biz Blog" },
     { property: "og:description", content: "Guides and news from the Mero Biz team." },
-  ] }),
+    { property: "og:url", content: "/blog" },
+  ], links: [{ rel: "canonical", href: "/blog" }] }),
   component: Blog,
 });
 
