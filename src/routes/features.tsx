@@ -20,7 +20,7 @@ function Features() {
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">Six industry verticals in one install, all working fully offline.</p>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl border bg-card p-7"><div className="text-4xl">{i}</div><h2 className="mt-4 text-xl font-semibold">{t}</h2><p className="mt-2 text-muted-foreground">{d}</p></div>
+            <div key={t} className="overflow-hidden rounded-2xl border bg-card"><img src={i} alt={`${t} business using Mero Biz`} loading="lazy" className="aspect-[4/3] w-full object-cover" /><div className="p-7"><h2 className="text-xl font-semibold">{t}</h2><p className="mt-2 text-muted-foreground">{d}</p></div></div>
           ))}
         </div>
         <h2 className="mt-20 font-display text-4xl font-bold">Tax compliance, built in</h2>

@@ -42,7 +42,7 @@ function Index() {
         <h2 className="font-display text-4xl font-bold">Built for how you do business</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {features.slice(0, 3).map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl bg-secondary p-6"><div className="text-3xl">{i}</div><h3 className="mt-3 font-semibold">{t}</h3><p className="mt-2 text-sm text-muted-foreground">{d}</p></div>
+            <div key={t} className="overflow-hidden rounded-2xl bg-secondary"><img src={i} alt={`${t} business using Mero Biz`} loading="lazy" className="aspect-[4/3] w-full object-cover" /><div className="p-6"><h3 className="font-semibold">{t}</h3><p className="mt-2 text-sm text-muted-foreground">{d}</p></div></div>
           ))}
         </div>
         <Link to="/features" className="mt-6 inline-block font-semibold text-primary">All features →</Link>

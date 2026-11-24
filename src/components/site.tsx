@@ -1,3 +1,9 @@
+import retailImg from "@/assets/feature-retail.jpg.asset.json";
+import restaurantImg from "@/assets/feature-restaurant.jpg.asset.json";
+import hotelImg from "@/assets/feature-hotel.jpg.asset.json";
+import salonImg from "@/assets/feature-salon.jpg.asset.json";
+import wholesaleImg from "@/assets/feature-wholesale.jpg.asset.json";
+import coopImg from "@/assets/feature-coop.jpg.asset.json";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
@@ -66,12 +72,12 @@ export function Footer() {
 }
 
 export const features = [
-  ["🛒", "Retail & Grocery", "Barcode scanning, GRN purchases, FEFO batch tracking, expiry protection and fast counter POS billing."],
-  ["🍽️", "Restaurant & Cafe", "Visual table tabs, 1-click KOT, local Wi-Fi kitchen display, split bills and takeaway tracking."],
-  ["🏨", "Hotel PMS", "Room availability grid, guest KYC register, in-stay folio posting and daily night audits."],
-  ["💇", "Salon, Beauty & Spa", "Workstation floor, live service timers, waiting lounge and advance deposit deductions."],
-  ["📦", "Wholesale & Distribution", "Bulk unpacking, tiered pricing, B2B credit terms and route dispatch manifests with COD."],
-  ["🏛️", "Cooperative Banking", "Member passbooks, reducing-balance EMI loans and statutory reserve fund allocations."],
+  [retailImg.url, "Retail & Grocery", "Barcode scanning, GRN purchases, FEFO batch tracking, expiry protection and fast counter POS billing."],
+  [restaurantImg.url, "Restaurant & Cafe", "Visual table tabs, 1-click KOT, local Wi-Fi kitchen display, split bills and takeaway tracking."],
+  [hotelImg.url, "Hotel PMS", "Room availability grid, guest KYC register, in-stay folio posting and daily night audits."],
+  [salonImg.url, "Salon, Beauty & Spa", "Workstation floor, live service timers, waiting lounge and advance deposit deductions."],
+  [wholesaleImg.url, "Wholesale & Distribution", "Bulk unpacking, tiered pricing, B2B credit terms and route dispatch manifests with COD."],
+  [coopImg.url, "Cooperative Banking", "Member passbooks, reducing-balance EMI loans and statutory reserve fund allocations."],
 ] as const;
 
 export const posts = [
