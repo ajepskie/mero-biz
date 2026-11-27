@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { getPricingMarket, pricingPlans } from "@/lib/pricing";
+import { createFileRoute } from "@tanstack/react-router";
+import { getPricingMarket, pricingPlans, pricingWhatsappUrls } from "@/lib/pricing";
 
 const getVisitorPricingMarket = createServerFn({ method: "GET" }).handler(async () => {
   const request = getRequest() as Request & { cf?: { country?: string } };
@@ -113,15 +113,17 @@ function Pricing() {
         <p className="text-muted-foreground">
           Need help choosing a plan? Our team is happy to help.
         </p>
-        <Link
-          to="/contact"
+        <a
+          href={pricingWhatsappUrls[market]}
+          target="_blank"
+          rel="noreferrer"
           className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-105"
         >
           Talk to a salesperson{" "}
           <span aria-hidden="true" className="ml-2">
             →
           </span>
-        </Link>
+        </a>
       </div>
     </section>
   );

@@ -44,6 +44,11 @@ export const pricingPlans: Record<PricingMarket, PricingPlan[]> = {
   ],
 };
 
+export const pricingWhatsappUrls: Record<PricingMarket, string> = {
+  NP: "https://wa.me/971543810741",
+  PH: "https://wa.me/639974988958",
+};
+
 export function getPricingMarket(countryCode: string | null | undefined): PricingMarket {
   return countryCode?.trim().toUpperCase() === "NP" ? "NP" : "PH";
 }
