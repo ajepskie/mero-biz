@@ -1,35 +1,27 @@
+import { createServerFn } from "@tanstack/react-start";
+import { getRequest } from "@tanstack/react-start/server";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { getPricingMarket, pricingPlans } from "@/lib/pricing";
 
-const plans = [
-  { term: "3 months", price: "5,275", perMonth: "1,758", discount: "5% off", savings: "275" },
-  { term: "6 months", price: "9,450", perMonth: "1,575", discount: "15% off", savings: "1,650" },
-  {
-    term: "1 year",
-    price: "16,650",
-    perMonth: "1,388",
-    discount: "25% off",
-    savings: "5,550",
-    featured: true,
-  },
-  { term: "2 years", price: "28,850", perMonth: "1,202", discount: "35% off", savings: "15,550" },
-  { term: "3 years", price: "38,650", perMonth: "1,074", discount: "42% off", savings: "27,950" },
-  { term: "4 years", price: "46,150", perMonth: "962", discount: "48% off", savings: "42,650" },
-  { term: "5 years", price: "49,950", perMonth: "833", discount: "55% off", savings: "61,050" },
-] as const;
+const getVisitorPricingMarket = createServerFn({ method: "GET" }).handler(async () => {
+  const request = getRequest() as Request & { cf?: { country?: string } };
+  return getPricingMarket(request.cf?.country ?? request.headers.get("cf-ipcountry"));
+});
 
 export const Route = createFileRoute("/pricing")({
+  loader: async () => ({ market: await getVisitorPricingMarket() }),
   head: () => ({
     meta: [
       { title: "Pricing — Mero Biz" },
       {
         name: "description",
         content:
-          "Explore Mero Biz subscription plans, pricing in Nepalese rupees, and long-term savings.",
+          "Explore Mero Biz subscription plans, pricing in Nepalese rupees and Philippine pesos.",
       },
       { property: "og:title", content: "Mero Biz Pricing" },
       {
         property: "og:description",
-        content: "Choose a Mero Biz plan that works for your business.",
+        content: "Choose a Mero Biz plan that works for your business, with local pricing.",
       },
       { property: "og:url", content: "/pricing" },
     ],
@@ -39,6 +31,11 @@ export const Route = createFileRoute("/pricing")({
 });
 
 function Pricing() {
+  const { market } = Route.useLoaderData();
+  const plans = pricingPlans[market];
+  const currencyPrefix = market === "NP" ? "NPR " : "₱";
+  const currencyName = market === "NP" ? "Nepalese rupees (NPR)" : "Philippine pesos (PHP)";
+
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:py-20">
       <div className="mx-auto max-w-2xl text-center">
@@ -51,12 +48,15 @@ function Pricing() {
         <p className="mt-5 text-lg text-muted-foreground">
           Choose a plan for your business. Pay once, and save more with a longer subscription.
         </p>
+        <p className="mt-3 text-sm font-medium text-primary">
+          Showing prices in {market === "NP" ? "Nepal" : "Philippines"}
+        </p>
       </div>
 
       <div className="mt-12 overflow-x-auto rounded-2xl border bg-card shadow-sm">
         <table className="w-full min-w-[700px] border-collapse text-left">
           <caption className="sr-only">
-            Mero Biz subscription plans priced in Nepalese rupees
+            Mero Biz subscription plans priced in {currencyName}
           </caption>
           <thead>
             <tr className="border-b bg-secondary/60 text-sm text-muted-foreground">
@@ -91,10 +91,18 @@ function Pricing() {
                     </span>
                   )}
                 </th>
-                <td className="whitespace-nowrap px-6 py-5">NPR {plan.price}</td>
-                <td className="whitespace-nowrap px-6 py-5">NPR {plan.perMonth}</td>
+                <td className="whitespace-nowrap px-6 py-5">
+                  {currencyPrefix}
+                  {plan.price}
+                </td>
+                <td className="whitespace-nowrap px-6 py-5">
+                  {currencyPrefix}
+                  {plan.perMonth}
+                </td>
                 <td className="whitespace-nowrap px-6 py-5">{plan.discount}</td>
-                <td className="whitespace-nowrap px-6 py-5">NPR {plan.savings}</td>
+                <td className="whitespace-nowrap px-6 py-5">
+                  {plan.savings === "n/a" ? "n/a" : `${currencyPrefix}${plan.savings}`}
+                </td>
               </tr>
             ))}
           </tbody>
