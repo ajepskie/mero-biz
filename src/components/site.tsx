@@ -34,6 +34,9 @@ export function Header() {
         <Link to="/" className="font-display text-2xl font-bold text-primary">Mero Biz</Link>
         <nav className="flex flex-wrap items-center gap-4">
           <Link to="/features" className={l}>Features</Link>
+          <Link to="/pricing" className={l}>
+            Pricing
+          </Link>
           <Link to="/blog" className={l}>Blog</Link>
           <Link to="/faq" className={l}>FAQ</Link>
           <Link to="/about" className={l}>About</Link>
